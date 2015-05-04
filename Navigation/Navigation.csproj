@@ -57,7 +57,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HtmlPage1.html" />
     <Content Include="Web.config" />
     <Content Include="youtube.html" />
   </ItemGroup>
