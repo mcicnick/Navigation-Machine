@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <style>
         html, body, div, span, applet, object, iframe,
         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -123,13 +124,17 @@
                     font-size: larger;
                 }
     </style>
-    <title></title>
+    <title>推薦衛教影音</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://www.youtube.com/player_api"></script>
 </head>
 <body>
     <div class="container">
         <div class="title">五月份推薦衛教影音</div>
-        <div class="video-zone">
-            <iframe width="940" height="529" src="https://www.youtube.com/embed/KBNW8qKeVNc?rel=0" frameborder="0" allowfullscreen></iframe>
+        <div id="video-zone" class="video-zone">
+            <div id="main">
+                <!--<iframe id="main" width="940" height="529" src="https://www.youtube.com/embed/KBNW8qKeVNc?rel=0&enablejsapi=1&vq=hd720" frameborder="0" allowfullscreen></iframe>-->
+            </div>
         </div>
         <div class="now-play">
             現在播放: 護眼顧鼻操
@@ -147,9 +152,9 @@
         <div class="video-list">
             <table>
                 <tr>
-                    <td><iframe width="273" height="163" src="https://www.youtube.com/embed/xbsGr7x2IZI?rel=0" frameborder="0" allowfullscreen></iframe></td>
-                    <td><iframe width="273" height="163" src="https://www.youtube.com/embed/mahndL-8v_0?rel=0" frameborder="0" allowfullscreen></iframe></td>
-                    <td><iframe width="273" height="163" src="https://www.youtube.com/embed/32RMtPRj_8Q?rel=0" frameborder="0" allowfullscreen></iframe></td>
+                    <td id="td1"><div id="frame1"></div></td>
+                    <td id="td2"><div id="frame2"></div></td>
+                    <td id="td3"><div id="frame3"></div></td>
                 </tr>
                 <tr style="height: .5em;">
                     <td></td>
@@ -164,5 +169,95 @@
             </table>
         </div>
     </div>
+    <script>
+
+        var player, playing = false;
+        function onYouTubeIframeAPIReady() {
+
+            player = new YT.Player('main', {
+                height: '529',
+                width: '940',
+                videoId: 'KBNW8qKeVNc',
+                playerVars: {
+                    fs: 0
+                },
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+
+            player = new YT.Player('frame1', {
+                height: '163',
+                width: '273',
+                videoId: 'xbsGr7x2IZI',
+                playerVars: {
+                    fs: 0
+                },
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+
+            player = new YT.Player('frame2', {
+                height: '163',
+                width: '273',
+                videoId: 'mahndL-8v_0',
+                playerVars: {
+                    fs: 0
+                },
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+
+            player = new YT.Player('frame3', {
+                height: '163',
+                width: '273',
+                videoId: '32RMtPRj_8Q',
+                playerVars: {
+                    fs: 0
+                },
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerStateChange(e) {
+            if ($(e.target.c).parent().attr("id") != "video-zone") {
+
+                if (playing) { playing = false; }
+
+                if (!playing) {
+                    var mainframe = $("#video-zone > iframe:first-child");
+                    var id = $(mainframe).attr("id");
+                    $("#" + id).width(273).height(163);
+                    $("#" + e.target.c.id).before($("#" + id));
+                    $("#" + e.target.c.id).appendTo($("#video-zone"));
+                    $("#video-zone > iframe:first-child").width(940).height(529);
+                    playing = true;
+                    onYouTubeIframeAPIReady();
+                }
+            }
+        }
+
+        function extractVideoID(url) {
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[7].length == 11) {
+                return match[7];
+            } else {
+                alert("Could not extract video ID.");
+            }
+        }
+
+        //$(function () {
+        //    $.getJSON("https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&channelId=UCHRXyMUy_2uOoIeJwCxXrbQ&key=AIzaSyCA7fEojUZhUwMFVIDsUJVtP7D0PO3iJZ8", function (result) {
+        //        $.each(result, function (i, field) {
+        //            alert(i);
+        //        });
+        //    });
+        //});
+    </script>
 </body>
 </html>
