@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <a href="https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com%2Fauth%2Fuserinfo.email+https://www.googleapis.com%2Fauth%2Fuserinfo.profile&state=/profile&redirect_uri=http://www.example.com/oauth2callback&response_type=code&client_id=415456215054-d72vnr8oseqfuei56vbiijltu8gu59bm.apps.googleusercontent.com">
+        使用Google登入
+    </a>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script>
+        $(function () {
+            $.getJSON("https://www.googleapis.com/youtube/v3/search?order=viewCount&part=snippet&channelId=UCHRXyMUy_2uOoIeJwCxXrbQ&key=AIzaSyCA7fEojUZhUwMFVIDsUJVtP7D0PO3iJZ8", function (result) {
+                $.each(result, function (i, field) {
+                    alert(i);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

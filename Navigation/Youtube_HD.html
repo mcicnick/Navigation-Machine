@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+            font-family: 'Microsoft JhengHei',Arial;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        blockquote, q {
+            quotes: none;
+        }
+
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+                content: '';
+                content: none;
+            }
+
+        .container {
+            width: 950px;
+            height: 1060px;
+            background-color: #FFFFFF;
+        }
+
+        .title {
+            font-size: 31px;
+            font-weight: bold;
+            color: #3E3A39;
+            margin: 8px 0 12px 0;
+        }
+
+        .video-zone {
+            display: inline-block;
+        }
+
+        .now-play {
+            font-size: 36px;
+            font-weight: bold;
+            color: #3E3A39;
+            margin: 12px 0 5px 20px;
+        }
+
+        .description {
+            color: #747474;
+            font-weight: bold;
+            font-size: 1.3em;
+            width: 800px;
+            height: 135px;
+            line-height: 1.5em;
+            float: left;
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .qrcode {
+            position: relative;
+            left: 2em;
+            bottom: 1em;
+            display: inline-block;
+        }
+
+        .video-list {
+            width: 100%;
+            height: 260px;
+            background-color: #E6E6E6;
+            margin-top: 25px;
+        }
+
+            .video-list table {
+                width: 100%;
+                table-layout: fixed;
+                border-spacing: 15px 0;
+            }
+
+                .video-list table tr:first-child {
+                    height: 187px;
+                }
+
+                    .video-list table tr:first-child td {
+                        vertical-align: middle;
+                        -webkit-box-shadow: 1px 0px 9px 0px rgba(50, 50, 50, 0.7);
+                        -moz-box-shadow: 1px 0 9px 0 rgba(50, 50, 50, 0.7);
+                        box-shadow: 1px 0 9px 0 rgba(50, 50, 50, 0.7);
+                        text-align: center;
+                        background-color: #ffffff;
+                    }
+
+                .video-list table tr:last-child td {
+                    color: #322825;
+                    font-weight: bolder;
+                    font-size: larger;
+                }
+
+        .responsive-container {
+            position: relative;
+            padding-bottom: 53.25%;
+            padding-top: 30px;
+            height: 0;
+            overflow: hidden;
+        }
+
+            .responsive-container, .responsive-container iframe {
+                max-width: 1280px;
+                max-height: 720px;
+            }
+
+                .responsive-container iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+    </style>
+    <title>推薦衛教影音</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title">五月份推薦衛教影音</div>
+        <div id="video-zone" class="video-zone">
+            <iframe id="main" width="940" height="529" src="https://www.youtube.com/embed/KBNW8qKeVNc?rel=0&enablejsapi=1&vq=hd720" frameborder="0"></iframe>
+        </div>
+        <div class="now-play">
+            現在播放: 護眼顧鼻操
+        </div>
+        <div class="description">
+            <p>
+                護眼顧鼻操是可以兼顧放鬆眼睛及鼻子的好運動，
+                在眼睛的部分，它可以放鬆眼部肌肉、消除眼睛疲勞及減緩近視度數增加。
+                在鼻子的部分，它可以放送鼻翼兩側肌肉、促進鼻部血液循環及通暢鼻道。
+            </p>
+        </div>
+        <div class="qrcode">
+            <img width="90" height="90" src="data:image/png;base64,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" />
+        </div>
+        <div class="video-list">
+            <table>
+                <tr>
+                    <td><iframe id="frame1" width="273" height="163" src="https://www.youtube.com/embed/xbsGr7x2IZI?rel=0&enablejsapi=1&vq=hd720" frameborder="0"></iframe></td>
+                    <td><iframe id="frame2" width="273" height="163" src="https://www.youtube.com/embed/mahndL-8v_0?rel=0&enablejsapi=1&vq=hd720" frameborder="0"></iframe></td>
+                    <td><iframe id="frame3" width="273" height="163" src="https://www.youtube.com/embed/32RMtPRj_8Q?rel=0&enablejsapi=1&vq=hd720" frameborder="0"></iframe></td>
+                </tr>
+                <tr style="height: .5em;">
+                    <td></td>
+                    <td><button id="swap">swap</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>腸久健康人長久</td>
+                    <td>最好的母乳給最愛的寶貝</td>
+                    <td>預防跌倒</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

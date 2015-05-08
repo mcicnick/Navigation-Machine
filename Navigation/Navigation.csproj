@@ -57,8 +57,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="auth.js" />
+    <Content Include="GoogleAPITest.html" />
     <Content Include="Web.config" />
     <Content Include="Youtube.html" />
+    <Content Include="Youtube_HD.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
